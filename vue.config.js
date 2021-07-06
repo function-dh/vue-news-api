@@ -1,6 +1,7 @@
 module.exports = {
 	publicPath: '/vue-news-api',
 	outputDir: 'docs',
+	lintOnSave: false,
 	css : {
 		loaderOptions : {
 			sass : {

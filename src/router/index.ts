@@ -1,23 +1,35 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
+
+// 라우트 컴포넌트 설정
+const MainHome = () => import ('@/components/main/MainHome.vue')
+const AskView = () => import ('@/components/ask/AskView.vue')
+const JobsView = () => import ('@/components/jobs/JobsView.vue')
+const NewsView = () => import ('@/components/news/NewsView.vue')
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'MainHome',
+    component: MainHome
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/ask',
+    name: 'AskView',
+    component: AskView
+  },
+  {
+    path: '/jobs',
+    name: 'JobsView',
+    component: JobsView
+  },
+  {
+    path: '/news',
+    name: 'NewsView',
+    component: NewsView
+  },
 ]
 
 const router = new VueRouter({

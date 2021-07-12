@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 
 // 라우트 컴포넌트 설정
-const MainHome = () => import ('@/components/main/MainHome.vue')
 const AskView = () => import ('@/components/ask/AskView.vue')
 const JobsView = () => import ('@/components/jobs/JobsView.vue')
 const NewsView = () => import ('@/components/news/NewsView.vue')
@@ -12,8 +11,7 @@ Vue.use(VueRouter)
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'MainHome',
-    component: MainHome
+    redirect : '/news',
   },
   {
     path: '/ask',

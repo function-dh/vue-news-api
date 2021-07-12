@@ -5,6 +5,8 @@ import VueRouter, { RouteConfig } from 'vue-router'
 const AskView = () => import ('@/components/ask/AskView.vue')
 const JobsView = () => import ('@/components/jobs/JobsView.vue')
 const NewsView = () => import ('@/components/news/NewsView.vue')
+const UserView = () => import ('@/components/common/viewItem/UserView.vue')
+const ItemView = () => import ('@/components/common/viewItem/ItemView.vue')
 
 Vue.use(VueRouter)
 
@@ -27,6 +29,16 @@ const routes: Array<RouteConfig> = [
     path: '/news',
     name: 'NewsView',
     component: NewsView
+  },
+  {
+    path: '/users',
+    name: 'UserView',
+    component: UserView
+  },
+  {
+    path: '/items',
+    name: 'ItemView',
+    component: ItemView
   },
 ]
 

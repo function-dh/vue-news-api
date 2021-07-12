@@ -17,21 +17,28 @@ export default Vue.extend({
 	name : 'ToolBar',
 	data() {
 		return {
-			isActive : false
 		}
 	},
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.Toolbar-wrap{
 		.menu-list{
 			display: flex;
 			> li{
-				width: 100%;
+				flex: 1 1 auto;
 				text-align: center;
+				> a{
+					display: block;
+					width: 100%;
+					padding: 12px 0;
+					color: white;
+					background: #42b883;
+				}
 				.router-link-active{
-					color: red;
+					font-weight: 700;
+					color: #354952;
 				}
 			}
 		}

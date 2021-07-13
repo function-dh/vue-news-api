@@ -2,10 +2,10 @@
 	<div>
 		<p v-if="isLoading">로딩 중....</p>
 		<ul v-else>
-			<li v-for="(user, index) in users" :key="index">
-				<a :href="user.url" target="_blank">
-					<h3>{{ user.title }}</h3>
-					<span>{{ user.user }}</span>
+			<li v-for="(news, index) in newsData" :key="index">
+				<a :href="news.url" target="_blank">
+					<h3>{{ news.title }}</h3>
+					<span>{{ news.user }}</span>
 				</a>
 			</li>
 		</ul>
@@ -14,29 +14,29 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import axios from 'axios';
+import { fetchNewsList } from '@/api/index';
 
 export default Vue.extend({
 	name : 'NewsView',
 	data() {
 		return {
-			users : [],
-			isLoading : true,
+			newsData : [],
+			isLoading : true, // 로딩 체크를 전역으로 변경 + 데이터 요청 시 false로 변경해야 함
 		}
 	},
 	methods: {
-		getUserData(){
-			axios.get('https://api.hnpwa.com/v0/news/1.json')
+		async getNewsData(){
+			await fetchNewsList()
 				.then(response => {
 					this.isLoading = false
-					this.users = response.data
+					this.newsData = response.data
 				})
 				.catch(err => console.log(err)
 			)
 		}
 	},
 	created() {
-		this.getUserData()
+		this.getNewsData()
 	},
 })
 </script>
